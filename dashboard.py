@@ -67,7 +67,8 @@ def update_dashboard(n):
     # Get real-time usage
     cpu_usage = psutil.cpu_percent()
     memory_usage = psutil.virtual_memory().percent
-    current_time = time.strftime("%H:%M:%S")
+    current_time = pd.Timestamp.now()
+
 
     # Keep last 50 readings
     if len(cpu_history) > 50:
@@ -142,6 +143,7 @@ def update_dashboard(n):
         forecast_fig,
         analysis_data
     )
-
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, host="0.0.0.0", port=10000)
+
+
