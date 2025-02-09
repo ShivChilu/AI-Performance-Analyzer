@@ -1,3 +1,4 @@
+from flask import Flask
 import psutil
 import dash
 from dash import dcc, html, dash_table
@@ -8,6 +9,7 @@ import time
 from prophet import Prophet
 
 app = dash.Dash(__name__)
+server = app.server
 
 # Store historical data
 cpu_history = []
